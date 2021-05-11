@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React from 'react';
+import Accordion from './components/Accordion';
+// get dummy data
+import items from './data/AccordionItems';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      accordionItems: []
+    }
+  }
+
+  componentDidMount() {
+    this.getAccordionItems();
+  }
+
+  getAccordionItems() {
+    Promise.resolve(items)
+      .then(data => {
+        this.setState({ accordionItems: data })
+      });
+  }
+
+  render() { 
+    return (
+      <div className="App">
+        <h2>FAQ</h2>
+        <Accordion items={this.state.accordionItems} />
+      </div>
+    );
+  }
 }
 
 export default App;
