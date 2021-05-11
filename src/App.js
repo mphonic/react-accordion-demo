@@ -1,38 +1,31 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import Accordion from './components/Accordion';
 // get dummy data
 import items from './data/AccordionItems';
 
 import './App.css';
 
-class App extends React.Component {
+const App = () => {
+  const [accordionItems, setAccordionItems] = useState([]);
 
-  constructor() {
-    super();
-    this.state = {
-      accordionItems: []
-    }
-  }
+  useEffect(() => {
+    getAccordionItems();
+  }, [])
 
-  componentDidMount() {
-    this.getAccordionItems();
-  }
 
-  getAccordionItems() {
+  const getAccordionItems = () => {
     Promise.resolve(items)
       .then(data => {
-        this.setState({ accordionItems: data })
+        setAccordionItems(data);
       });
   }
 
-  render() { 
-    return (
-      <div className="App">
-        <h2>FAQ</h2>
-        <Accordion items={this.state.accordionItems} />
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <h2>FAQ</h2>
+      <Accordion items={accordionItems} />
+    </div>
+  );
 }
 
 export default App;
