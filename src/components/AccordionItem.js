@@ -3,7 +3,7 @@ import Chevron from "./Chevron";
 
 import "./Accordion.css";
 
-class Accordion extends React.Component {
+class AccordionItem extends React.Component {
 
     constructor(props) {
         super(props);
@@ -35,7 +35,7 @@ class Accordion extends React.Component {
         return (
             <div className="accordion__section">
                 <button className={`accordion${this.state.active ? ' active' : ''}`} onClick={() => { this.toggleAccordion() }}>
-                <p className="accordion__title">{this.props.title}</p>
+                    <p className="accordion__title">{this.props.title}</p>
                     <Chevron className={`accordion__icon${this.state.active ? ' rotate' : ''}`} width={10} fill={"#777"} />
                 </button>
                 <div
@@ -53,4 +53,4 @@ class Accordion extends React.Component {
     }
 }
 
-export default Accordion;
+export default AccordionItem;
