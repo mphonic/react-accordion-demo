@@ -3,7 +3,7 @@ import Chevron from "./Chevron";
 
 import "./Accordion.css";
 
-class Accordion extends React.Component {
+class AccordionItem extends React.Component {
 
     render() {
         return (
@@ -12,16 +12,12 @@ class Accordion extends React.Component {
                     <p className="accordion__title"></p>
                     <Chevron className="accordion__icon" width={10} fill={"#777"} />
                 </button>
-                <div
-                    className="accordion__content"
-                >
-                    <div
-                        className="accordion__text"
-                    />
+                <div className="accordion__content">
+                    <div className="accordion__text"></div>
                 </div>
             </div>
         );
     }
 }
 
-export default Accordion;
+export default AccordionItem;
