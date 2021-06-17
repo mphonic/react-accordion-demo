@@ -37,10 +37,10 @@ const AccordionItem = ({ title, content, isActive, onChange }) => {
                 style={{ maxHeight: `${height}` }}
                 className="accordion__content"
             >
-            <div
-                className="accordion__text"
-                dangerouslySetInnerHTML={{ __html: content }}
-            />
+                <div
+                    className="accordion__text"
+                    dangerouslySetInnerHTML={{ __html: content }}
+                />
             </div>
         </div>
     );
