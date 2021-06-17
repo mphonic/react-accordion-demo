@@ -43,10 +43,10 @@ class AccordionItem extends React.Component {
                     style={{ maxHeight: `${this.state.height}` }}
                     className="accordion__content"
                 >
-                <div
-                    className="accordion__text"
-                    dangerouslySetInnerHTML={{ __html: this.props.content }}
-                />
+                    <div
+                        className="accordion__text"
+                        dangerouslySetInnerHTML={{ __html: this.props.content }}
+                    />
                 </div>
             </div>
         );
