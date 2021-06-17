@@ -33,7 +33,7 @@ class Accordion extends React.Component {
                         key={c} 
                         title={item.title} 
                         content={item.content} 
-                        isActive={!!(c === this.state.selectedItem)} 
+                        isActive={(c === this.state.selectedItem)} 
                         onChange={(active) => this.itemChanged(c, active)} />
                 ))
                 }
