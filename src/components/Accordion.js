@@ -25,7 +25,7 @@ const Accordion = (props) => {
                     key={c} 
                     title={item.title} 
                     content={item.content} 
-                    isActive={!!(c === selectedItem)} 
+                    isActive={(c === selectedItem)} 
                     onChange={(active) => itemChanged(c, active)} />
             ))
             }
