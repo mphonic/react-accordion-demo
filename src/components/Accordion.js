@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import AccordionItem from "./AccordionItem";
 
 import "./Accordion.css";
@@ -11,9 +11,9 @@ const Accordion = (props) => {
         setItems(props.items);
     }, [props.items]);
 
-    const itemChanged = (index, isActive) => {
+    const itemChanged = useCallback((index, isActive) => {
         setSelectedItem(isActive ? index : null);
-    }
+    }, []);
     
     if (!items || !items.length) return ''; 
 

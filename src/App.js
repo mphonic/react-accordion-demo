@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Accordion from './components/Accordion';
 // get dummy data
 import items from './data/AccordionItems';
@@ -13,12 +13,12 @@ const App = () => {
   }, [])
 
 
-  const getAccordionItems = () => {
+  const getAccordionItems = useCallback(() => {
     Promise.resolve(items)
       .then(data => {
         setAccordionItems(data);
       });
-  }
+  }, []);
 
   return (
     <div className="App">

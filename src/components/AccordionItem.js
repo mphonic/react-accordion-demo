@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Chevron from "./Chevron";
 
 import "./Accordion.css";
@@ -14,17 +14,16 @@ const AccordionItem = ({ title, content, isActive, onChange }) => {
         updateAccordionView(isActive);
     }, [isActive]);
 
-    const toggleAccordion = () => {
-        onChange(!active);
+    const toggleAccordion = useCallback(() => {
         updateAccordionView(!active);
-        if (!onChange) return;
-    }
+        onChange && onChange(!active);
+    }, [onChange]);
 
-    const updateAccordionView = (active) => {
+    const updateAccordionView = useCallback((active) => {
         const height = !active ? '0px' : `${contentElement.current.scrollHeight}px`; // if current state is active, set height to 0
         setActive(active);
         setHeight(height);
-    }
+    }, [contentElement]);
 
     return (
         <div className="accordion__section">
