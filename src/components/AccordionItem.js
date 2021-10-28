@@ -5,35 +5,28 @@ import "./Accordion.css";
 
 const AccordionItem = ({ title, content, isActive, onChange }) => {
     const [active, setActive] = useState(false);
-    const [height, setHeight] = useState('0px');
 
     const contentElement = useRef();
 
     useEffect(() => {
         if (isActive === active) return;
-        updateAccordionView(isActive);
+        setActive(isActive);
     }, [isActive]);
 
-    const toggleAccordion = () => {
-        updateAccordionView(!active);
+    const toggleAccordion = useCallback(() => {
+        setActive(!active);
         onChange && onChange(!active);
-    };
-
-    const updateAccordionView = useCallback((active) => {
-        const height = !active ? '0px' : `${contentElement.current.scrollHeight}px`; // if current state is active, set height to 0
-        setActive(active);
-        setHeight(height);
-    }, [contentElement]);
+    }, [active, onChange]);
 
     return (
         <div className="accordion__section">
-            <button className={`accordion${active ? ' active' : ''}`} onClick={() => {toggleAccordion() }}>
+            <button className={`accordion${active ? ' active' : ''}`} onClick={toggleAccordion}>
                 <p className="accordion__title">{title}</p>
                 <Chevron className={`accordion__icon${active ? ' rotate' : ''}`} width={10} fill={"#777"} />
             </button>
             <div
                 ref={contentElement}
-                style={{ maxHeight: `${height}` }}
+                style={{ maxHeight: `${active ? contentElement.current.scrollHeight : 0}px` }}
                 className="accordion__content"
             >
                 <div
