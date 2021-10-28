@@ -14,10 +14,10 @@ const AccordionItem = ({ title, content, isActive, onChange }) => {
         updateAccordionView(isActive);
     }, [isActive]);
 
-    const toggleAccordion = useCallback(() => {
+    const toggleAccordion = () => {
         updateAccordionView(!active);
         onChange && onChange(!active);
-    }, [onChange]);
+    };
 
     const updateAccordionView = useCallback((active) => {
         const height = !active ? '0px' : `${contentElement.current.scrollHeight}px`; // if current state is active, set height to 0
