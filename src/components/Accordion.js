@@ -2,15 +2,12 @@ import React from "react";
 
 import "./Accordion.css";
 
-class Accordion extends React.Component {
+const Accordion = () => {
 
-    render() {
-
-        return (
-            <section className="accordion__container">
-            </section>
-        )
-    }
+    return (
+        <section className="accordion__container">
+        </section>
+    )
 }
 
 export default Accordion;
